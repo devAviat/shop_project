@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: shop-api
+  config:
+    activate:
+      on-profile: local
+  h2:
+    console:
+      enabled: true  # H2 웹 콘솔을 사용하겠다는 의미
+      path: /shop  # 콘솔의 경로
+  datasource:
+    driver-class-name: org.h2.Driver  #h2 드라이버 설정
+    url: jdbc:h2:tcp://localhost/~/shop #접속 URL
+    username: sa  # 사용자 이름 (로그인 시 사용)r
+    password:   # 사용자 암호 (로그인 시 사용)
+  jpa:
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: false
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect # 로컬에서 간혹 연결 지연되는 경우 추가할것.
+
+
